@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
 import { AuthProvider } from './context/authContext';
+import { RootRoute } from './routes/rootRoute';
 import './sass/main.sass'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <RootRoute />
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

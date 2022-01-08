@@ -2,7 +2,7 @@
   "name": "implusgames",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/sergoio0704/ImplusGames#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
     "express": "^4.17.1",
-    "path": "^0.12.7"
+    "jsonwebtoken": "^8.5.1",
+    "path": "^0.12.7",
+    "pg-promise": "^10.11.1"
   }
 }

@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS account_role (
     PRIMARY KEY (id_account, id_role),
     CONSTRAINT FK_account_role_account FOREIGN KEY (id_account)
     REFERENCES account(id_account)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS game (

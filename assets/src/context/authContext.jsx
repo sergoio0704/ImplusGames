@@ -1,7 +1,4 @@
 import React, { useCallback, useContext, useEffect, useState } from "react"
-import { Route, Routes, Navigate, Outlet } from "react-router-dom"
-import { Login } from "../pages/login/login"
-import { Registration } from "../pages/registration/registration"
 
 const storageName = "token"
 
@@ -36,18 +33,8 @@ export const AuthProvider = ({ children }) => {
         logout,
         token: token,
       }}>
-        <Routes>
-            <Route path='/login' element={<Login />} />
-            <Route path='/registration' element={<Registration />}/>
-            <Route path='/' element={<PrivateRoute />}>
-               <Route path='/' element={children}/>
-            </Route>
-        </Routes> 
+        {children}
     </AuthContext.Provider>
   )
 }
 
-const PrivateRoute = ({...rest}) => {
-    const {token} = useAuth()
-    return token ? <Outlet/> : <Navigate to='/login' />
-}
