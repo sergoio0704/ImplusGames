@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react"
-import { getAccount } from "../services/accountService"
+import { getAccount, getAvatar } from "../services/accountService"
 import { useAuth } from "./authContext"
 import { Roles } from "../models/role"
 
@@ -23,7 +23,15 @@ export const AccountProvider = ({ children }) => {
             res.data.isAdmin = resolveAmdmin(res.data.role)
             setAccount(res.data) 
         })
-        .catch( err => alert(err.response.data.msg))
+        .catch( err => alert(err.response))
+
+    getAvatar(authContext.token)
+        .then( res => {
+          console.log(res)
+            setAccount( acc => {
+              return {...acc, avatar: res}
+            })
+        })
   }, [])
 
   return (

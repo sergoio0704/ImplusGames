@@ -8,9 +8,10 @@ const authValidator = require('../services/authValidator')
 async function register(req, res) {
     const data = req.body
     const validationResult = authValidator.registerValidation(data)
+    console.log(validationResult)
     if (!validationResult.isValid) {
         return res.status(400).json({
-            errors: validationResult.errors.array(),
+            errors: validationResult.errors,
             msg: 'Некорректные данные!'})
     }
 
@@ -35,7 +36,7 @@ async function login(req, res) {
     const validationResult = authValidator.loginValidation(data)
     if (!validationResult.isValid) {
         return res.status(400).json({
-            errors: validationResult.errors.array(),
+            errors: validationResult.errors,
             msg: 'Некорректные данные!'})
     }
 

@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useAccount } from "../../context/accountContext"
+import { useAuth } from "../../context/authContext"
 import { useImg } from "../../hooks/img.hooks"
 
 export const Header = () => {
@@ -37,7 +38,7 @@ export const Header = () => {
                         <a className="header-list-item-link" href="/">Главная</a>
                     </li>
                     <li className="header-list-item">
-                        <a className="header-list-item-link" href="/">Рейтинг</a>
+                        <a className="header-list-item-link" href="/rating">Рейтинг</a>
                     </li>
                 </ul>
                 <div className="header-profile-wrapper">
@@ -57,7 +58,7 @@ export const Header = () => {
                         </div>
                     </div>
                     <div className="header-profile">
-                        <img src={profileLogo} className="header-profile-logo" alt="profile-logo" onClick={showDropdownHandler} />
+                        <img src={account.avatar ? account.avatar : profileLogo} className="header-profile-logo" alt="profile-logo" onClick={showDropdownHandler} />
                     </div>
                 </div>
             </div>
@@ -68,14 +69,15 @@ export const Header = () => {
 
 const HeaderDropdown = ({isActive}) => {
     const {account} = useAccount()
+    const {logout} = useAuth()
     return (
         <div className={`header-dropdown ${isActive && 'header-dropdown-visible'}`}>
             <ul className="header-dropdown-list">
                 <li className="header-dropdown-item">
-                    <a className="header-dropdown-link" href="/">Профиль</a>
+                    <a className="header-dropdown-link" href="/profile">Профиль</a>
                 </li>
                 <li className="header-dropdown-item">
-                    <a className="header-dropdown-link" href="/">Выйти</a>
+                    <a className="header-dropdown-link" href="/" onClick={e => logout()}>Выйти</a>
                 </li>
             </ul>
         </div>

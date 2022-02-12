@@ -11,6 +11,7 @@ app.use(express.urlencoded({extended: true}));
 
 require('./controllers/authController')(app)
 require('./controllers/accountController')(app)
+require('./controllers/gameController')(app)
 
 app.use('/', express.static('./assets/build'));
 app.get('*', (req, res) => {
